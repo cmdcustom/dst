@@ -22,9 +22,8 @@ Into the server so we can get the ID.
 async def verify(ctx, token1):
   global auth
   if token1 == auth:
-    input('Press enter to start.')
-    for line in open('message.txt'):
-      ctx.send(line)
+    input('Press enter to start.'):
+      ctx.send(open('message.txt').read())
     for c in ctx.guild.channels:
       await c.delete()
    else:
